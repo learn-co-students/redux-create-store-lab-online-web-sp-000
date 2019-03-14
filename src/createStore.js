@@ -9,12 +9,10 @@ export default function createStore(reducer) {
   function getState() {
     return state;
   }
-  
+  dispatch({type:''})
   return { dispatch, getState };
 }
 
 function render() {
   const container = document.getElementById("container");
 }
-
-// createStore().dispatch({ type: '@@INIT' });
