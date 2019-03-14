@@ -11,6 +11,8 @@ describe('createStore', function() {
     global.document = jsdom.jsdom('<html><body><div id="container"></div></body></html>');
     candyStore = createStore(candyReducer);
     countStore = createStore(countReducer);
+    candyStore.dispatch({type: ''})
+    countStore.dispatch({type: ''})
   })
 
   it('returns an object', function() {
