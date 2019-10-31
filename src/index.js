@@ -8,6 +8,7 @@ function createStore() {
 
   function dispatch(action){
     state = candyReducer(state, action)
+    render();
   }
 
   return {
