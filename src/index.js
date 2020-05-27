@@ -1,4 +1,21 @@
 // write your createStore function here
+function createStore(reducer) {
+  let state;
+
+  function dispatch(action) {
+    state = reducer(state, action);
+    render();
+  }
+
+  function getState() {
+    return state;
+  };
+
+  return {
+    getState,
+    dispatch
+  };
+};
 
 function candyReducer(state = [], action) {
   switch (action.type) {
@@ -19,4 +36,13 @@ function render() {
 };
 
 // use your createStore function and the functions provided here to create a store
+let store = createStore(candyReducer)
+
 // once the store is created, call an initial dispatch
+store.dispatch({type: '@@INIT'})
+
+// let button = document.getElementById('button');
+ 
+// button.addEventListener('click', () => {
+//   store.dispatch({ type: 'INCREASE_COUNT' });
+// });
