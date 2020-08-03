@@ -1,22 +1,34 @@
 // write your createStore function here
 
-function candyReducer(state = [], action) {
+function candyReducer (state = [], action) {
   switch (action.type) {
     case 'ADD_CANDY':
-      return [...state, action.candy];
+      return [...state, action.candy]
     default:
-      return state;
+      return state
   }
 }
 
-function render() {
-  let container = document.getElementById('container');
-  if(store.getState()) {
+function render () {
+  const container = document.getElementById('container')
+  if (store.getState()) {
     container.textContent = store.getState().join(' ')
   } else {
     throw new Error("the store's state has not been defined yet")
   }
-};
+}
 
 // use your createStore function and the functions provided here to create a store
 // once the store is created, call an initial dispatch
+const createStore = reducer => {
+  let state
+  const getState = () => state
+  const dispatch = action => {
+    state = reducer(state, action)
+    render()
+  }
+  return { getState, dispatch }
+}
+
+let store = createStore(candyReducer)
+store.dispatch({ type: '@@INIT' })
