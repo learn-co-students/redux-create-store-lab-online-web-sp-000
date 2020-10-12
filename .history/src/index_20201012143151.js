@@ -2,9 +2,9 @@
 function createStore(reducer) {
   let state;
 
-  function dispatch(action){
+  function dispatch(action) {
     state = reducer(state, action);
-    render()
+    render();
   }
 
   function getState() {
@@ -12,10 +12,9 @@ function createStore(reducer) {
   }
 
   return {
-    dispatch, 
-    getState 
+    dispatch,
+    getState
   }
-  
 }
 
 function candyReducer(state = [], action) {
@@ -27,7 +26,6 @@ function candyReducer(state = [], action) {
   }
 }
 
-
 function render() {
   let container = document.getElementById('container');
   if(store.getState()) {
@@ -37,10 +35,7 @@ function render() {
   }
 };
 
-
-
 // use your createStore function and the functions provided here to create a store
-let store = createStore(candyReducer)
 // once the store is created, call an initial dispatch
-store.dispatch({type: '@@INIT'})
-
+let store = createStore(candyReducer)
+store.dispatch({type: '@@INIT'});
