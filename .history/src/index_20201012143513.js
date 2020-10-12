@@ -8,6 +8,7 @@ function createStore(reducer) {
   }
 
   function getState() {
+    // console.log(store);
     return state
   }
 

@@ -1,14 +1,15 @@
 // write your createStore function here
 function createStore(reducer) {
-  let state;
+  let state
 
   function dispatch(action){
-    state = reducer(state, action);
+    state = candyReducer(state, action);
     render()
   }
 
   function getState() {
-    return state
+    console.log(store);
+    return store.state
   }
 
   return {
