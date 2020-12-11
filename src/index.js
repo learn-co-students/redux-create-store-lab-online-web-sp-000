@@ -1,4 +1,24 @@
 // write your createStore function here
+function createStore(reducer){
+  let state;
+
+  function dispatch(action) {
+    state = reducer(state, action);
+    render();
+
+  }
+
+  function getState() {
+    return state;
+  }
+
+  return {
+    dispatch,
+    getState
+  };
+
+};
+
 
 function candyReducer(state = [], action) {
   switch (action.type) {
@@ -20,3 +40,9 @@ function render() {
 
 // use your createStore function and the functions provided here to create a store
 // once the store is created, call an initial dispatch
+
+
+let store = createStore(candyReducer) 
+// ^^ store == {dispatch(), getState()}
+
+store.dispatch({type: '@@INT'}) // initialize state with "dispatch call to the reduce"...feels like weird wording. reducer is called inside of dispatch, so not really "call to reducer".. just having dispatch fn do its thing
