@@ -20,3 +20,30 @@ function render() {
 
 // use your createStore function and the functions provided here to create a store
 // once the store is created, call an initial dispatch
+
+export default function createStore(reducer){
+  // your code here!
+    let state;
+    let listeners = [];
+    
+    const subscribe = (listener) => {
+      listeners.push(listener);
+    }
+    
+    const dispatch = (action) => {
+     state = reducer(state, action)
+     listeners.forEach( listener => listener() ) 
+    }
+    
+    dispatch({type:"Initial Action"})
+    
+    const getState = () => {
+      return state
+    }
+    
+    return{
+      getState: getState,
+      dispatch: dispatch,
+      subscribe, subscribe
+    }
+  }
