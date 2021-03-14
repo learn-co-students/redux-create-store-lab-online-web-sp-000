@@ -1,10 +1,11 @@
 // write your createStore function here
+
 function createStore(reducer) {
    let state;
 
    // dispatch (takes in an action, updates state and renders)
    function dispatch(action) {
-      state = candyReducer(state, action);
+      state = reducer(state, action);
       render();
    }
    
@@ -48,10 +49,5 @@ button.addEventListener('click', () => {
    let candyInput = document.querySelector('.candy').value;
    let container = document.getElementById('container');
    container.innerHTML += candyInput;
-   container.innerHTML += `<br />`
+   store.dispatch({ type: 'ADD_CANDY', candy: `${candyInput}`});
 })
-
-
-
-
-
