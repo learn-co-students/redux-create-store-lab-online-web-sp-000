@@ -1,27 +1,26 @@
-describe('createStore()', () => {
-  let store;
+// write your createStore function here
 
-  beforeEach(function(){
-    store = createStore(candyReducer);
-  })
+function candyReducer(state = [], action) {
+  switch (action.type) {
+    
+    case 'ADD_CANDY':
+      return [...state, action.candy];
+    default:
+      return state;
+  }
+}
 
-  it('returns an object', function() {
-    expect(store).to.be.an("object")
-  })
+function render() {
+  
+  let container = document.getElementById('container');
+  
+  if(store.getState()) {
+    container.textContent = store.getState().join(' ')
+  } 
+  else {
+    throw new Error("the store's state has not been defined yet")
+  }
+};
 
-  describe('getState method', function(){
-    it('returns the default state based on the reducer for the store', function(){
-      store.dispatch({type: '@@INIT'})
-      expect(store.getState()).to.eql([]);
-    })
-  })
-
-  describe('dispatch method', function(){
-
-    it('can dispatch actions with data associated to update the state', function(){
-      store.dispatch({type: 'ADD_CANDY', candy: "Jelly Beans"});
-      let todos = store.getState();
-      expect(todos).to.eql(["Jelly Beans"]);
-    })
-  })
-})
+// use your createStore function and the functions provided here to create a store
+// once the store is created, call an initial dispatch
