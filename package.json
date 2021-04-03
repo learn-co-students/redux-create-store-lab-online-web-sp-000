@@ -6,7 +6,7 @@
   "scripts": {
     "debug": "node-debug --hidden node_modules _mocha --watch",
     "debug-ide": "./bin/debug-ide",
-    "test": "mocha --timeout 5000 -R mocha-multi --reporter-options spec=-,json=.results.json",
+    "test": "mocha --timeout 30000 -R mocha-multi --reporter-options spec=-,json=.results.json",
     "start": "open index.html"
   },
   "repository": {
@@ -26,8 +26,8 @@
   "homepage": "https://github.com/learn-co-curriculum/introduction-to-react-assessment#readme",
   "devDependencies": {
     "@babel/core": "^7.4.5",
-    "@babel/preset-env": "^7.4.5",
     "@babel/plugin-transform-modules-commonjs": "^7.6.0",
+    "@babel/preset-env": "^7.4.5",
     "babel": "^6.23.0",
     "babel-register": "^6.18.0",
     "expect": "^1.20.2",
